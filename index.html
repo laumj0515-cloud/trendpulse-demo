@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f2f4f1" />
+    <meta
+      name="description"
+      content="TrendPulse 趋势监测与产品机会分析 Agent 在线演示。"
+    />
+    <title>TrendPulse | 趋势研究 Demo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23142621%22/><path d=%22M14 35h9l5-15 8 27 6-18 4 6h5%22 fill=%22none%22 stroke=%22%2393d9bc%22 stroke-width=%225%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">跳至主要内容</a>
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="TrendPulse 首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span>TrendPulse</span>
+      </a>
+      <div class="topbar-meta">
+        <span class="demo-label">PC 展示版</span>
+        <button class="text-button" id="resetTop" type="button">重新开始</button>
+      </div>
+    </header>
+
+    <main id="workspace" class="workspace">
+      <aside class="context-panel" aria-label="研究说明">
+        <div class="context-intro">
+          <p class="eyebrow">趋势研究助手</p>
+          <h1>从信号中识别产品机会</h1>
+          <p>选择一个预置研究任务，查看 Agent 如何整理公开信号、归纳趋势并生成机会建议。</p>
+        </div>
+
+        <section class="method" aria-labelledby="methodTitle">
+          <h2 id="methodTitle">分析路径</h2>
+          <ol>
+            <li><span>采集</span><small>公开资讯与讨论信号</small></li>
+            <li><span>整理</span><small>清洗、去重与主题聚类</small></li>
+            <li><span>判断</span><small>需求、证据与机会评估</small></li>
+          </ol>
+        </section>
+
+        <div class="demo-note">
+          <strong>预置数据演示</strong>
+          <p>当前版本未接入大语言模型，只展示 3 个经过整理的研究案例。输入其他主题时不会生成虚构结果。</p>
+        </div>
+      </aside>
+
+      <section class="chat-shell" aria-label="TrendPulse 对话演示">
+        <header class="chat-header">
+          <div>
+            <span class="status"><i aria-hidden="true"></i>预置演示模式</span>
+            <p>未接入大语言模型，不采集实时数据</p>
+          </div>
+          <button class="compact-button" id="resetChat" type="button">新建研究</button>
+        </header>
+
+        <div class="messages" id="messages" aria-live="polite">
+          <article class="message assistant-message">
+            <div class="message-author">TrendPulse</div>
+            <div class="message-body">
+              <p>选择一个预置任务，体验从公开信号到产品机会建议的完整研究流程。</p>
+              <div class="suggestions" id="suggestions">
+                <button type="button" data-prompt="分析 AI 宠物陪伴产品的近期趋势">AI 宠物陪伴</button>
+                <button type="button" data-prompt="研究年轻人的情绪健康产品机会">情绪健康产品</button>
+                <button type="button" data-prompt="看看银发人群的智能硬件需求">银发智能硬件</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <form class="composer" id="chatForm">
+          <label for="promptInput">尝试一个研究主题</label>
+          <div class="input-row">
+            <textarea
+              id="promptInput"
+              name="prompt"
+              rows="1"
+              maxlength="160"
+              placeholder="支持宠物陪伴、情绪健康、银发智能硬件"
+              required
+            ></textarea>
+            <button class="send-button" id="sendButton" type="submit">发送</button>
+          </div>
+          <p class="composer-hint">当前只识别 3 类预置主题。按 Enter 发送，Shift + Enter 换行</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span>TrendPulse 产品演示</span>
+      <span>公开信号研究，不替代专业市场调研</span>
+    </footer>
+
+    <template id="resultTemplate">
+      <article class="message assistant-message result-message">
+        <div class="message-author">TrendPulse</div>
+        <div class="message-body">
+          <div class="result-heading">
+            <div>
+              <span class="result-kicker">研究摘要</span>
+              <h2></h2>
+            </div>
+            <span class="sample-tag">示例数据</span>
+          </div>
+          <p class="summary"></p>
+          <div class="signals"></div>
+          <section class="opportunity">
+            <span>值得验证的机会</span>
+            <h3></h3>
+            <p></p>
+          </section>
+          <div class="evidence">
+            <strong>证据线索</strong>
+            <div class="evidence-list"></div>
+          </div>
+          <p class="follow-up">你可以继续追问：目标用户、核心场景、竞品差异或最小可行产品。</p>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
